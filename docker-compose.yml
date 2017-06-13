@@ -4,6 +4,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - ./views:/app/views
+      - ./public:/app/public
     ports:
       - "3000:3000"
     links:
