@@ -13,35 +13,56 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
 
-  <!-- Bootstrap -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!-- Vue template - move somewhere else later on?... -->
+  <template id='bleh'>
+        <li>
+          <button class="item-content" v-on:click="toggleTodo(todo)">{{ title }}</button>
+          <button class="item-remove" v-on:click="$emit('remove')"> X </button>
+        </li>
+  </template>
+</head>
 
-      <template id='bleh'>
-          <li>
-              <button type="button" class="btn btn-info btn-xs" v-on:click="$emit('remove')"> X </button>
-              {{ title }}
-          </li>
-      </template>
-  </head>
-
-  <body>
-      <div class="container" id="to-do-list">
-          <div class='well'>
-              <div class="page-header">
-                  <h2>To Do List</h2>
-                  <form class="form-horizontal">
-                      <div class="form-group">
-                          <input class="form-control" id="focusedInput" type="text" v-model="newTodoText" v-on:keyup.enter="addNewTodo" placeholder="Add something you're not gonna do anyway">
-                          <button type="button" class="btn btn-info btn-sm" id="addButton" v-on:click='addNewTodo'>Add!</button>
-                      </div>
-                  </form>
-              </div>
-              <ul class="list-unstyled">
-                  <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo" v-bind:title="todo" v-on:remove="todos.splice(index, 1)"></li>
-              </ul>
-          </div>
+<body>
+    <div class="container app" id="to-do-list">
+      <div>
+        <form class="form">
+          <input
+            class="input"
+            id="focusedInput"
+            type="text"
+            v-model="newTodoText"
+            v-on:keyup.enter="addNewTodo"
+            placeholder="Add New To Do">
+          <button
+            type="button"
+            class="btn add-btn"
+            id="addButton"
+            v-on:click='addNewTodo'>Add!</button>
+        </form>
       </div>
-  </body>
+
+      <div>
+        <ul class="todo-list">
+          <li
+            class="item"
+            is="todo-item"
+            v-for="(todo, index) in todos"
+            v-bind:key="todo"
+            v-bind:title="todo"
+            v-on:remove="todos.splice(index, 1)"></li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom:20px">
+        <button class="btn">All</button>
+        <button class="btn">Complete</button>
+        <button class="btn">Incomplete</button>
+      </div>
+    </div>
+
+<script src="components.js"></script>
+</body>
+</html>
 
 <!--
     <div id="app">
@@ -67,6 +88,3 @@
       </div>
     </script>
   -->
-    <script src="components.js"></script>
-</body>
-</html>
