@@ -26,7 +26,17 @@ new Vue({
             'done': true}
         ]
     },
+    created(){
+      this.getToDos()
+      console.log(this.data)
+    },
     methods: {
+        getToDos: function() {
+          this.$http.get('http://127.0.0.1:3000/todo').then(function(response) {
+            console.log(response.body)
+            this.data = response.body
+          });
+      },
         addNewTodo: function() {
             var val = this.todo.value
             this.$http.post('http://127.0.0.1:3000/todo', {"value": val}).then (function(response) {
