@@ -29,9 +29,11 @@ new Vue({
     methods: {
         addNewTodo: function() {
             var val = this.todo.value
-            this.todos.push({value: val, done: false})
+            this.$http.post('http://127.0.0.1:3000/todo', {"value": val}).then (function(response) {
+              console.log (response.body);
+            });
+            //this.todos.push({value: val, done: false})
             this.todo.value = null
-            /*this.todo.value = ''*/
         }
     }
 })
