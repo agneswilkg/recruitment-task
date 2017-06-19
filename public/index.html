@@ -20,8 +20,8 @@
           <button class="item-remove" v-on:click="$emit('remove')"> X </button>
         </li>
   </template>
-</head>
 
+</head>
 <body>
     <div class="container app" id="to-do-list">
       <div>
@@ -30,7 +30,7 @@
             class="input"
             id="focusedInput"
             type="text"
-            v-model="newTodoText"
+            v-model="todo.value"
             v-on:keyup.enter="addNewTodo"
             placeholder="Add New To Do">
           <button
@@ -48,7 +48,7 @@
             is="todo-item"
             v-for="(todo, index) in todos"
             v-bind:key="todo"
-            v-bind:title="todo"
+            v-bind:title="todo.value"
             v-on:remove="todos.splice(index, 1)"></li>
         </ul>
       </div>
@@ -59,10 +59,8 @@
         <button class="btn">Incomplete</button>
       </div>
     </div>
-
-<script src="components.js"></script>
 </body>
-</html>
+
 
 <!--
     <div id="app">
@@ -88,3 +86,6 @@
       </div>
     </script>
   -->
+    <script src="components.js"></script>
+</body>
+</html>

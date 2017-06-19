@@ -6,22 +6,35 @@ Vue.component('todo-item', {
 new Vue({
     el: '#to-do-list',
     data: {
-        newTodoText: '',
+        todo: {
+          /*'id': todos.length(),*/
+          'value': '',
+          'done': true
+        },
         todos: [
-            'wake up',
-            'take Gapcio for a walk',
-            'program',
-            'go to sleep'
+            {'id': 1,
+            'value': 'wake up',
+            'done': true},
+            {'id': 2,
+            'value':'take Gapcio for a walk',
+            'done': true},
+            {'id': 3,
+            'value': 'program',
+            'done': true},
+            {'id': 4,
+            'value': 'go to sleep',
+            'done': true}
         ]
     },
     methods: {
         addNewTodo: function() {
-            this.todos.push(this.newTodoText)
-            this.newTodoText = ''
+            var val = this.todo.value
+            this.todos.push({value: val, done: false})
+            this.todo.value = null
+            /*this.todo.value = ''*/
         }
     }
 })
-
 
 
 /*
