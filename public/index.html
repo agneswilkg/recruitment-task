@@ -17,6 +17,7 @@
   <template id='bleh'>
         <li>
           <button class="item-content" v-on:click="toggleTodo(todo)">{{ title }}</button>
+          <button class="item-toggle" v-on:click="$emit('toggle')"> ✓ </button>
           <button class="item-remove" v-on:click="$emit('remove')"> X </button>
         </li>
   </template>
@@ -49,7 +50,8 @@
             v-for="(todo, index) in todos"
             v-bind:key="todo"
             v-bind:title="todo.value"
-            v-on:remove="deleteTodo(todo, index)"></li>
+            v-on:remove="deleteTodo(todo, index)"
+            v-on:toggle="putTodo(todo)"></li>
         </ul>
       </div>
 

@@ -151,6 +151,23 @@ button:hover {
     }
   }
 
+
+  .item-toggle {
+      margin-left: .5em;
+      background: none;
+      border: 1px solid;
+      color: inherit;
+      padding: 0;
+      line-height: 1;
+      width: 2em;
+      height: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 80%;
+    }
+
 .item-remove {
     margin-left: .5em;
     background: none;
