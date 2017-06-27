@@ -15,5 +15,6 @@ services:
       - mongo
     environment:
       - MONGO_ADDR=mongo
+    restart: always
   mongo:
     image: mongo
