@@ -8,7 +8,8 @@ new Vue({
     data: {
         todo: {
           'value': '',
-          'done': true
+          'done': true,
+          '_id': ''
         },
         todos: []
     },
@@ -18,18 +19,22 @@ new Vue({
     methods: {
         getToDos: function() {
           this.$http.get('http://127.0.0.1:3000/todo').then(function(response) {
-            console.log(response.body)
             this.todos = response.body
           });
       },
         addNewTodo: function() {
             var val = this.todo.value
             this.$http.post('http://127.0.0.1:3000/todo', {"value": val}).then (function(response) {
-              console.log(response.body);
               this.todos.push({value: val, done: false});
               this.getToDos()
             });
             this.todo.value = null
+        },
+        deleteTodo: function(todo, index) {
+          var id = todo['_id'];
+          this.$http.delete('http://127.0.0.1:3000/todo', {body: {'id': id}}).then(function(r){
+              this.todos.splice(index, 1)
+          })
         }
     }
 })

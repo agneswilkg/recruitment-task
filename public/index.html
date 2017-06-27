@@ -49,7 +49,7 @@
             v-for="(todo, index) in todos"
             v-bind:key="todo"
             v-bind:title="todo.value"
-            v-on:remove="todos.splice(index, 1)"></li>
+            v-on:remove="deleteTodo(todo, index)"></li>
         </ul>
       </div>
 
@@ -59,33 +59,6 @@
         <button class="btn">Incomplete</button>
       </div>
     </div>
-</body>
-
-
-<!--
-    <div id="app">
-      <form metod="post" v-on:"submitt: postToDo">
-        <input type="text" placeholder="Add Next To Do" v-model="todos.value">
-        <button>Add</button>
-      </form>
-
-
-      <ul>
-        <li v-for="todo in todos">
-          {{ todo.value }}
-        </li>
-      </ul>
-    </div>
-
-
-    <script type="text/x-template" id="app">
-      <div id="app">
-        <div v-for="data in data">
-          {{ data.value }}
-        </div>
-      </div>
-    </script>
-  -->
     <script src="components.js"></script>
 </body>
 </html>
