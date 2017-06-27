@@ -7,24 +7,10 @@ new Vue({
     el: '#to-do-list',
     data: {
         todo: {
-          /*'id': todos.length(),*/
           'value': '',
           'done': true
         },
-        todos: [
-            {'id': 1,
-            'value': 'wake up',
-            'done': true},
-            {'id': 2,
-            'value':'take Gapcio for a walk',
-            'done': true},
-            {'id': 3,
-            'value': 'program',
-            'done': true},
-            {'id': 4,
-            'value': 'go to sleep',
-            'done': true}
-        ]
+        todos: []
     },
     created(){
       this.getToDos()
@@ -34,13 +20,14 @@ new Vue({
         getToDos: function() {
           this.$http.get('http://127.0.0.1:3000/todo').then(function(response) {
             console.log(response.body)
-            this.data = response.body
+            this.todos = response.body
           });
       },
         addNewTodo: function() {
             var val = this.todo.value
             this.$http.post('http://127.0.0.1:3000/todo', {"value": val}).then (function(response) {
-              console.log (response.body);
+              console.log(response.body);
+              this.getToDos()
             });
             //this.todos.push({value: val, done: false})
             this.todo.value = null
