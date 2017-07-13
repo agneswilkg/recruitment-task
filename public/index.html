@@ -47,7 +47,7 @@
           <li
             class="item"
             is="todo-item"
-            v-for="(todo, index) in filterTodos(todos)"
+            v-for="(todo, index) in todoFilter"
             v-bind:key="todo"
             v-bind:title="todo.value"
             v-on:remove="deleteTodo(todo, index)"
@@ -55,9 +55,9 @@
             ></li>
         </ul>
         <div style="margin-bottom:20px">
-          <button class="btn">All</button>
-          <!-- <button class="btn" v-on:click="filterTodos(done)">Complete</button> -->
-          <button class="btn">Incomplete</button>
+          <button v-on:click="todoFilterKey = 'all'" class="btn">All</button>
+          <button v-on:click="todoFilterKey = 'done'" class="btn">Complete</button>
+          <button v-on:click="todoFilterKey = 'notDone'" class="btn">Incomplete</button>
         </div>
       </div>
 

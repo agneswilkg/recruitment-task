@@ -11,18 +11,31 @@ Vue.component('todo-item', {
 new Vue({
     el: '#to-do-list',
     data: {
-        todo: {
+      todoFilterKey: 'all',
+      todo: {
           'value': '',
           'done': true,
           '_id': ''
-        },
-        todos: [],
-        filter: ''
+      },
+      todos: [],
     },
     created(){
       this.getToDos()
     },
-
+    computed: {
+  	   todoFilter() {
+    	    return this[this.todoFilterKey]
+        },
+        all() {
+          return this.todos
+        },
+        done() {
+          return this.todos.filter((todo) => todo.done)
+        },
+        notDone() {
+    	     return this.todos.filter((todo) => !todo.done)
+         }
+    },
     methods: {
         getToDos: function() {
           this.$http.get('http://127.0.0.1:3000/todo').then(function(response) {
