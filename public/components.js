@@ -1,3 +1,8 @@
+Vue.filter('done', function(todo) {
+      return todo.done ? todo : null;
+})
+
+
 Vue.component('todo-item', {
     template: '#bleh',
     props: ['title']
@@ -11,11 +16,13 @@ new Vue({
           'done': true,
           '_id': ''
         },
-        todos: []
+        todos: [],
+        filter: ''
     },
     created(){
       this.getToDos()
     },
+
     methods: {
         getToDos: function() {
           this.$http.get('http://127.0.0.1:3000/todo').then(function(response) {
@@ -42,8 +49,14 @@ new Vue({
           var id = todo['_id']
           console.log(value, done, !done, id);
           this.$http.put('http://127.0.0.1:3000/todo', {'value': value, 'done': !done, 'id': id}).then(function(){
-
+              //should something be written here?...
+          })
+        },
+        filterTodos: function(todos) {
+          return todos.filter(function(todo) {
+            return todo.done ? todo : null
           })
         }
     }
+
 })
