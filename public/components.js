@@ -62,7 +62,7 @@ new Vue({
           var id = todo['_id']
           console.log(value, done, !done, id);
           this.$http.put('http://127.0.0.1:3000/todo', {'value': value, 'done': !done, 'id': id}).then(function(){
-              //should something be written here?...
+              this.getToDos()
           })
         },
         filterTodos: function(todos) {
