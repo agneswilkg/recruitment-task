@@ -9,7 +9,7 @@ html {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
-  background: #20B2AA;
+  background: #20B2AA !important;
 }
 
 body {
@@ -19,6 +19,14 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Source Sans Pro', sans-serif;
+  background: #20B2AA;
+  background-image:  "wallpaper/002.jpg";
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }
 
 button {
@@ -48,6 +56,7 @@ button:hover {
   background: #fff;
   overflow: hidden;
   box-shadow: 0 0 5px rgba(25,25,25,.25);
+  background-image: url(wallpapers/001.jpg);
 }
 
 .btn {
@@ -56,12 +65,10 @@ button:hover {
   border-radius: 2em;
   padding: 0.75em 1.5em;
   cursor: pointer;
-  background: none;
-  color: #1c9c95;
-  border: 1px solid;
+  background: #fff;
+  color: #20B2AA;
   letter-spacing: 1px;
   font-family: 'Source Sans Pro', sans-serif;
-  color: #4fc08d;
   border: #20B2AA 1px solid;
   transition: 250ms ease-out;
 }
@@ -83,12 +90,13 @@ button:hover {
   margin-bottom: 3px;
   border-radius: 2em;
   padding: 0.75em 1.5em;
-  background: none;
+  background: #fff;
   font-family: 'Source Sans Pro', sans-serif;
   border: #e3e3e3 1px solid;
   transition: border 250ms ease-out;
   display: inline-flex;
 }
+
 .input:focus {
   border: #20B2AA 1px solid;
   outline: none;
@@ -101,9 +109,15 @@ button:hover {
 
 .todo-list {
   width: 100%;
-  padding: 0 1rem;
+  padding: 1.25rem;
+  padding-right: 1.25rem;
   flex: 1;
+  margin-left: 0px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: #fff;
 }
+
 .todo-list .item {
   display: flex;
   justify-content: space-between;
@@ -120,67 +134,70 @@ button:hover {
   margin-bottom: 0;
 }
 
-    &.complete {
-      color: lightgreen;
-      #{$block}__item-content {
-        &:after {
-          background: lightgreen;
-        }
-      }
-    }
-  }
-
 .item-content {
-    position: relative;
-    &:after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: $color-main;
-      transition: 250ms ease-out;
-      transform-origin: center;
-      transform: scalex(0);
-    }
-    &:hover, &:focus {
-      &:after {
-        transform: scalex(1);
-      }
-    }
-  }
+  position: relative;
+  text-align: left;
+  max-width: 350px;
+}
 
 
-  .item-toggle {
-      margin-left: .5em;
-      background: none;
-      border: 1px solid;
-      color: inherit;
-      padding: 0;
-      line-height: 1;
-      width: 2em;
-      height: 2em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-size: 80%;
-    }
+.item-toggle {
+  margin-left: .5em;
+  background: none;
+  border: 1px solid;
+  color: inherit;
+  padding: 0;
+  line-height: 1;
+  width: 2em !important;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 80%;
+}
+
+.item-toggle:hover{
+  color: #fff;
+  background: #20B2AA;
+}
 
 .item-remove {
-    margin-left: .5em;
-    background: none;
-    border: 1px solid;
-    color: inherit;
-    padding: 0;
-    line-height: 1;
-    width: 2em;
-    height: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 80%;
-  }
+  margin-left: .5em;
+  background: none;
+  border: 1px solid;
+  color: inherit;
+  padding: 0;
+  line-height: 1;
+  width: 2em !important;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 80%;
+}
+
+.item-remove:hover{
+  color: #fff;
+  background: #20B2AA;
+}
+
+.up-above {
+  width: 100%;
+
+  padding-bottom: 1.25rem;
+}
+
+.down-below {
+  padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
+  text-align: center;
+
+}
+
+
+.down {
+  margin: auto;
+  background-color: #fff;
 }
